@@ -25,7 +25,73 @@ public class MagicSquare
      */
     public boolean isMagicSquare()
     {
-        return false;   // complete this method
+      int sum = 0;
+        //sum finder
+        
+        int countRow = 0;
+        int countCol = 0;
+        int countDia1 = 0;
+        int countDia2 = 0;
+        int numRow = array.length;
+        int numCol = array[0].length;
+        for (int i = 0; i < numRow; i++){
+          sum += array[0][i];
+        }
+        
+        if (numCol != numRow){
+          return false;
+        }
+        for (int j = 0; j < numRow; j++){
+        for(int i = 0; i< numRow; i++){
+         
+          countRow += array[j][i];
+        }
+        if (countRow != sum)
+          return false;
+        
+        }
+        for (int j = 0; j < numRow;j++){
+        for(int i = 0; i< numRow; i++){
+         
+          countCol += array[i][j];
+        }
+        if (countCol != sum)
+          return false;
+        
+        }
+        for (int j = 0; j < numRow; j++){
+          countDia1 += array[j][j];
+
+        }
+        if (countDia1 != sum){
+          return false;
+        }
+        for (int j = 0; j <numRow; j++){
+          countDia2 += array[j][numCol-(j+1)];
+        }
+        if (countDia2 != sum){
+
+          return false;
+        }
+        return true;
+
+
+
+
+
+        
+        
+        
+
+       
+        
+        
+        
+        
+        
+        
+        
+          // complete this method
     }
 
     /**
