@@ -27,14 +27,14 @@ public class MagicSquare
     {
       int sum = 0;
         //sum finder
-        
+        int count = 0;
         int countRow = 0;
         int countCol = 0;
         int countDia1 = 0;
         int countDia2 = 0;
         int numRow = array.length;
         int numCol = array[0].length;
-        for (int i = 0; i < numRow; i++){
+        for (int i = 0; i < numCol; i++){
           sum += array[0][i];
         }
         
@@ -46,17 +46,22 @@ public class MagicSquare
          
           countRow += array[j][i];
         }
-        if (countRow != sum)
-          return false;
+        if (countRow != sum){
+          count++;
+        }
+        countRow = 0; 
         
         }
+        
+        
         for (int j = 0; j < numRow;j++){
         for(int i = 0; i< numRow; i++){
          
           countCol += array[i][j];
         }
         if (countCol != sum)
-          return false;
+          count++;
+          countCol = 0;
         
         }
         for (int j = 0; j < numRow; j++){
@@ -64,16 +69,22 @@ public class MagicSquare
 
         }
         if (countDia1 != sum){
-          return false;
+          count++;
+          
         }
+        
         for (int j = 0; j <numRow; j++){
           countDia2 += array[j][numCol-(j+1)];
         }
         if (countDia2 != sum){
 
-          return false;
+          count++;
+          countDia2 = 0;
         }
-        return true;
+        
+        System.out.println(count);
+        return count == 0;
+        
 
 
 
